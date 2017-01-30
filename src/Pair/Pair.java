@@ -1,3 +1,5 @@
+package Pair;
+
 /**
  * Write a generic class (using Java generics) called Pair that stores two values
  * of the generic type.  It should have a constructor to set them,
