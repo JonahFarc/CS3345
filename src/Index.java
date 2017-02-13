@@ -70,8 +70,9 @@ public class Index
         }
         else //If letter node does not exist yet
         {
+            String search = data.substring(0,1).toUpperCase() + data.substring(1);
             Node n = head;
-            while (n.next != null && n.next.data.compareTo(data) < 0) //Search for alphabetical spot for the letter node, or until the end of the list
+            while (n.next != null && (n.next.data.substring(0,1).toUpperCase() + n.next.data.substring(1)).compareTo(search) < 0) //Search for alphabetical spot for the letter node, or until the end of the list
             {
                 n = n.next;
             }
@@ -189,6 +190,7 @@ public class Index
         list.add("Deb");
         list.add("Greg");
         list.add("John");
+        list.add("Zed");
         System.out.print(list);
         System.out.println("________________________\n");
 
