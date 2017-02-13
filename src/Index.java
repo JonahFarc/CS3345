@@ -47,8 +47,16 @@ public class Index
     //Adds the given string to the linked list in sorted order
     public void add(String data)
     {
-        if (find(data) != null) //If the string is already in the linked list, don't add it
+        if (!(data.matches("([a-z]|[A-Z])([A-Z]|[a-z])+"))) //If the string is not a name, don't add it
+        {
+            System.out.println(data + " is not a name.");
             return;
+        }
+        if (find(data) != null) //If the string is already in the linked list, don't add it
+        {
+            System.out.println(data + " is already in the list!");
+            return;
+        }
         if (size < 1) //If list is empty
         {
             addFront(data.substring(0, 1).toUpperCase());
@@ -102,9 +110,15 @@ public class Index
     public void remove(String s)
     {
         if (find(s) == null) //If the string is not in the linked list, do nothing
+        {
+            System.out.println(s + " is not in the list!");
             return;
+        }
         if (s.length() == 1) //If trying to delete a letter node, disallow that.
+        {
+            System.out.println("Cannot delete letter node!");
             return;
+        }
         Node n = find(s);
         Node letter = find(s.substring(0, 1).toUpperCase());
         if (letter.next == n && (n.next == null || n.next.data.length() == 1)) //If it's the last string in the letter
@@ -144,7 +158,10 @@ public class Index
     {
         String s = (c + "").toUpperCase();
         if (find(s) == null) //If letter node does not exist
+        {
+            System.out.println("Letter node " + c + " is not in the list!");
             return;
+        }
         Node n = find(s);
         while (n.next.next != null && n.next.next.data.length() != 1) //remove each string one by one until there's only one left
         {
