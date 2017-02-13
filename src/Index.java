@@ -71,21 +71,29 @@ public class Index
         else //If letter node does not exist yet
         {
             String search = data.substring(0,1).toUpperCase() + data.substring(1);
-            Node n = head;
-            while (n.next != null && (n.next.data.substring(0,1).toUpperCase() + n.next.data.substring(1)).compareTo(search) < 0) //Search for alphabetical spot for the letter node, or until the end of the list
+            if(head.data.compareTo(search) > 0)
             {
-                n = n.next;
-            }
-            if (n.next == null)
-            {
-                addEnd(data.substring(0, 1).toUpperCase());
-                addEnd(data);
+                addFront(data);
+                addFront(data.substring(0,1).toUpperCase());
             }
             else
             {
-                addAfter(n, data.substring(0, 1).toUpperCase());
-                n = n.next;
-                addAfter(n, data);
+                Node n = head;
+                while (n.next != null && (n.next.data.substring(0, 1).toUpperCase() + n.next.data.substring(1)).compareTo(search) < 0) //Search for alphabetical spot for the letter node, or until the end of the list
+                {
+                    n = n.next;
+                }
+                if (n.next == null)
+                {
+                    addEnd(data.substring(0, 1).toUpperCase());
+                    addEnd(data);
+                }
+                else
+                {
+                    addAfter(n, data.substring(0, 1).toUpperCase());
+                    n = n.next;
+                    addAfter(n, data);
+                }
             }
         }
     }
@@ -186,11 +194,11 @@ public class Index
         list.add("Dan");
         list.add("Ben");
         list.add("Sarah");
+        list.add("anne");
         list.add("george");
         list.add("Deb");
         list.add("Greg");
         list.add("John");
-        list.add("Zed");
         System.out.print(list);
         System.out.println("________________________\n");
 
