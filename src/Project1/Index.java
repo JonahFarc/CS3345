@@ -1,4 +1,4 @@
-// Project 1 for CS 3345.001
+package Project1;// Project 1 for CS 3345.001
 // Programmer: Dylan Yu (dsy160030)
 // Description: Creates a singly-linked list that stores names alphabetically, sorted by letter nodes.
 // This program can add or remove strings to the list or search for strings. The output is also formatted.

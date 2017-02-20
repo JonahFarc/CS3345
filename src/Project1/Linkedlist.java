@@ -1,4 +1,4 @@
-// Linked list
+package Project1;// Linked list
 // Singly-linked, each node has an int
 
 public class Linkedlist
