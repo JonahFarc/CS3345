@@ -43,7 +43,7 @@
    j) Main
         Demonstrates all of the above methods.
  */
-public class MySearchTree<elem extends Comparable<elem>>
+public class MySearchTree<elem extends Comparable<? super elem>>
 {
     Node<elem> root;
     int size;
@@ -55,6 +55,8 @@ public class MySearchTree<elem extends Comparable<elem>>
 
     private void add(elem data, Node<elem> node)
     {
+        if(node == null)
+            return;
         if(data.compareTo(node.data) < 0)
         {
             if(node.left != null)
@@ -75,7 +77,6 @@ public class MySearchTree<elem extends Comparable<elem>>
                 size++;
             }
         }
-        return;
     }
 
     public Node find(elem data)
@@ -110,9 +111,11 @@ public class MySearchTree<elem extends Comparable<elem>>
 
     private int leafCount(Node<elem> node)
     {
+        if(node == null)
+            return -1;
         if(node.left == null && node.right == null)
             return 1;
-        else if(node.left!= null && node.right != null)
+        else if(node.left != null && node.right != null)
             return leafCount(node.left) + leafCount(node.right);
         else if (node.left != null)
             return leafCount(node.left);
@@ -127,9 +130,11 @@ public class MySearchTree<elem extends Comparable<elem>>
 
     private int parentCount(Node<elem> node)
     {
+        if(node == null)
+            return -1;
         if(node.left == null && node.right == null)
             return 0;
-        else if(node.left!= null && node.right != null)
+        else if(node.left != null && node.right != null)
             return 1+leafCount(node.left) + leafCount(node.right);
         else if (node.left != null)
             return 1+leafCount(node.left);
@@ -139,12 +144,39 @@ public class MySearchTree<elem extends Comparable<elem>>
 
     public int height()
     {
+        height(root);
+    }
 
+    private int height(Node<elem> node)
+    {
+        if(node == null)
+            return -1;
+        if(node.left == null && node.right == null)
+            return 0;
+        else if (node.left != null && node.right != null)
+            return 1+Math.max(height(node.left),height(node.right));
+        else if (node.left != null)
+            return 1+height(node.left);
+        else
+            return 1+height(node.right);
     }
 
     public boolean isPerfect()
     {
+        isPerfect(root);
+    }
 
+    private boolean isPerfect(Node<elem> node)
+    {
+        if(node == null)
+            return false;
+        if((node.left != null && node.right == null) || (node.right != null && node.left == null))
+            return false;
+        if(node.left == null && node.right == null)
+            return true;
+        if(height(node.right) == height(node.left) && isPerfect(node.left) && isPerfect(node.right))
+            return true;
+        return false;
     }
 
     public elem ancestors(elem data)
@@ -152,7 +184,11 @@ public class MySearchTree<elem extends Comparable<elem>>
 
     }
 
-    public void inOrderPrint(Node<elem> node)
+    public void inOrderPrint()
+    {
+        inOrderPrint(root);
+    }
+    private void inOrderPrint(Node<elem> node)
     {
         if (node != null)
         {
@@ -162,7 +198,12 @@ public class MySearchTree<elem extends Comparable<elem>>
         }
     }
 
-    public void preOrderPrint(Node<elem> node)
+    public void preOrderPrint()
+    {
+        preOrderPrint(root);
+    }
+
+    private void preOrderPrint(Node<elem> node)
     {
         if (node != null)
         {
