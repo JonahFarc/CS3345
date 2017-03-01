@@ -1,48 +1,7 @@
 /**
  * Created by M3800 on 2/20/2017.
  */
-/*
-   10 points
-   a) add
-       Adds a node to the tree containing the passed value.
 
-   10 points
-   b) find
-        Returns true if the value passed is in the tree.
-
-   10 points
-   c) leafCount
-        Returns the count of all of the leaves in the tree.
-
-   10 points
-   d) parentCount
-        Returns the count of all of the parents in the tree.
-
-   10 points
-   e) height
-        Returns the height of the tree.
-
-   10 points
-   f) isPerfect
-        Returns true if the tree is a perfect tree.
-        (A perfect tree is filled at every level).
-
-   10 points
-   g) ancestors
-        Returns the ancestor values of the passed value.
-
-   10 points
-   h) inOrderPrint
-        Prints node values using an inorder traversal.
-
-   10 points
-   i) preOrderPrint
-        Prints node values using a preorder traversal.
-
-   10 points
-   j) Main
-        Demonstrates all of the above methods.
- */
 public class MySearchTree<elem extends Comparable<? super elem>>
 {
     Node<elem> root;
