@@ -4,7 +4,7 @@ package Project2;
  * Created by M3800 on 2/20/2017.
  */
 
-public class MySearchTree<elem extends Comparable<? super elem>>
+public class    MySearchTree<elem extends Comparable<? super elem>>
 {
     Node<elem> root;
     int size;
@@ -63,6 +63,7 @@ public class MySearchTree<elem extends Comparable<? super elem>>
             else
                 return null;
         }
+        return null;
     }
 
     public int leafCount()
@@ -105,7 +106,7 @@ public class MySearchTree<elem extends Comparable<? super elem>>
 
     public int height()
     {
-        height(root);
+        return height(root);
     }
 
     private int height(Node<elem> node)
@@ -124,7 +125,7 @@ public class MySearchTree<elem extends Comparable<? super elem>>
 
     public boolean isPerfect()
     {
-        isPerfect(root);
+        return isPerfect(root);
     }
 
     private boolean isPerfect(Node<elem> node)
@@ -142,7 +143,7 @@ public class MySearchTree<elem extends Comparable<? super elem>>
 
     public elem ancestors(elem data)
     {
-
+        return data;
     }
 
     public void inOrderPrint()
@@ -176,7 +177,7 @@ public class MySearchTree<elem extends Comparable<? super elem>>
 
     public static void main(String[] args)
     {
-
+        return;
     }
 
     private static class Node<elem>
