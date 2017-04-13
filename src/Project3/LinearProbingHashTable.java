@@ -122,7 +122,7 @@ public class LinearProbingHashTable<K, V> {
 
     // returns the hash value for the given key
     public int getHashValue(K key) {
-        int hash = key.hashcode();
+        int hash = key.hashCode();
         hash %= size;
         if (hash < 0)
             hash += size;
